@@ -7,6 +7,7 @@
 				align-items: center;
 			}
 			input {
+				font-size: 16px;
 				height: 30px;
 				margin: auto 2px auto 2px;
 			}
@@ -16,11 +17,19 @@
 				border: none;
 				background: none;
 			}
-			ul {
-
+			.itemDiv {
+				display: flex;
+				align-items: center;
 			}
-			ul li {
-
+			.key {
+				font-size: 16px;
+				font-family: sans-serif;
+				flex: 1
+			}
+			.value {
+				font-size: 16px;
+				font-family: sans-serif;
+				flex: 1
 			}
 		</style>
 	</head>
@@ -31,7 +40,14 @@
 			<button id="addItem" type="submit"><img src="../images/add_32.png"/></button>
 		</div>
 		<span id="message"></span>
-		<ul class="items_list"></ul>
+		<ul id="itemsList">
+			<li>
+				<div class="itemDiv">
+					<span class="key">Key</span>
+					<span class="value">Value</span>
+				</div>
+			</li>
+		</ul>
 		<script src="../js/mapper.js"></script>
 	</body>
 </html>
