@@ -4,11 +4,11 @@
     "description": "Add key value pairs",
     "permissions": ["declarativeContent", "storage"],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["js/background.js"],
         "persistant": false
     },
     "page_action": {
-        "default_popup": "popup.html",
+        "default_popup": "html/popup.html",
         "default_icon": {
             "16": "images/add_16.png",
             "24": "images/add_24.png",
