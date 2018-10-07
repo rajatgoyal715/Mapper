@@ -7,29 +7,41 @@
 				align-items: center;
 			}
 			input {
+				flex: 1;
 				font-size: 16px;
 				height: 30px;
 				margin: auto 2px auto 2px;
 			}
 			button {
-				margin: 5px;
-				padding: 0;
 				border: none;
 				background: none;
+				outline: none;
 			}
 			.itemDiv {
 				display: flex;
+				flex-wrap: wrap;
 				align-items: center;
+				justify-content: center;
+				margin: 5px;
+			}
+			ul {
+				list-style: none;
+				padding-left: 0;
 			}
 			.key {
+				flex: 1;
 				font-size: 16px;
 				font-family: sans-serif;
-				flex: 1
+				margin: 0px 5px 0px 5px;
+				color: #232323;
 			}
 			.value {
+				flex: 1;
 				font-size: 16px;
 				font-family: sans-serif;
-				flex: 1
+				margin: 0px 5px 0px 5px;
+				text-align: right;
+				color: #808080;
 			}
 		</style>
 	</head>
@@ -37,7 +49,7 @@
 		<div class="new_item">
 			<input id="keyInput" type="text" placeholder="Enter key"/>
 			<input id="valueInput" type="text" placeholder="Enter value"/>
-			<button id="addItem" type="submit"><img src="../images/add_32.png"/></button>
+			<button id="addItem" type="submit"><img src="../images/add_24.png"/></button>
 		</div>
 		<span id="message"></span>
 		<ul id="itemsList">
