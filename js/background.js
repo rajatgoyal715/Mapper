@@ -1,7 +1,9 @@
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({'map': {}}, function() {
-		console.log('Pairs set successfully');
-	});
+    chrome.storage.sync.get(['map'], function(result) {
+        if(!result.map){
+            chrome.storage.sync.set({'map': {}});
+        }
+    });
 
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([{
