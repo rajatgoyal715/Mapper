@@ -17,6 +17,12 @@
 				background: none;
 				outline: none;
 			}
+			.message {
+				text-align: center;
+			}
+			#message {
+				font-size: 14px;
+			}
 			.itemDiv {
 				display: flex;
 				flex-wrap: wrap;
@@ -51,7 +57,9 @@
 			<input id="valueInput" type="text" placeholder="Enter value"/>
 			<button id="addItem" type="submit"><img src="../images/add_24.png"/></button>
 		</div>
-		<span id="message"></span>
+		<div class="message">
+			<span id="message">New pair added successfully</span>
+		</div>
 		<ul id="itemsList">
 			<li>
 				<div class="itemDiv">

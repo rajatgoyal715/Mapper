@@ -2,12 +2,17 @@ var keyInput, valueInput, spanMessage, addButton, itemsList;
 
 window.onload = function() {
 	keyInput = this.document.getElementById('keyInput');
+	keyInput.textContent = "";
+
 	valueInput = this.document.getElementById('valueInput');
+	valueInput.textContent = "";
 
 	addButton = this.document.getElementById('addItem');
 	addButton.onclick = addItem;
 
 	spanMessage = this.document.getElementById('message');
+	spanMessage.textContent = "";
+
 	itemsList = this.document.getElementById('itemsList');
 
 	loadPairs();
@@ -50,8 +55,11 @@ function setPairs(pairs, callback) {
 }
 
 function message(message) {
-	console.log(message);
 	spanMessage.textContent = message;
+	spanMessage.style.visibility = "visible";
+	setTimeout(function() {
+		spanMessage.style.visibility = "hidden";
+	}, 2000);
 }
 
 function populateList(pairs) {
