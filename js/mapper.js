@@ -81,7 +81,7 @@ function message(message) {
 function copyToClipboardOnClick() {
 	navigator.clipboard.writeText(this.querySelector('.value').textContent)
 		.then(function () {
-				message('Value copied to clipboard.');
+			message('Value copied to clipboard.');
 		})
 		.catch(function () {
 			message('Failed to copy value to clipboard.');
