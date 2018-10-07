@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            button {
-                height: 30px;
-                width: 30px;
-                outline: none;
-            }
-        </style>
-    </head>
-    <body>
-        <button id="changeColor"></button>
-    </body>
+	<head>
+		<style>
+			.new_item {
+				display: flex;
+				align-items: center;
+			}
+			input {
+				height: 30px;
+				margin: auto 2px auto 2px;
+			}
+			button {
+				margin: 5px;
+				padding: 0;
+				border: none;
+				background: none;
+			}
+			ul {
+
+			}
+			ul li {
+
+			}
+		</style>
+	</head>
+	<body>
+		<div class="new_item">
+			<input id="keyInput" type="text" placeholder="Enter key"/>
+			<input id="valueInput" type="text" placeholder="Enter value"/>
+			<button id="addItem" type="submit"><img src="../images/add_32.png"/></button>
+		</div>
+		<span id="message"></span>
+		<ul class="items_list"></ul>
+		<script src="../js/mapper.js"></script>
+	</body>
 </html>
