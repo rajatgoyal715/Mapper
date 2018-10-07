@@ -2,5 +2,10 @@
     "name": "Mapper",
     "version": "1.0",
     "description": "Add key value pairs",
+    "permissions": ["storage"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistant": false
+    },
     "manifest_version": 2
 }
