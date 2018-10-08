@@ -46,22 +46,6 @@ function addPair(key, value, callback) {
 	});
 }
 
-function deleteItemListener(key) {
-	return function () {
-		getPairs(function(result) {
-			var newPairs = {};
-			for (var item in result.map) {
-				if (result.map.hasOwnProperty(item) && item !== key) {
-					newPairs[item] = result.map[item];
-				}
-			}
-			setPairs(newPairs, function() {
-				message(key + ' successfully removed'); 
-			});
-		});
-	}
-}
-
 function getPairs(callback) {
 	chrome.storage.sync.get(['map'], callback);
 }
@@ -78,6 +62,21 @@ function message(message) {
 	}, 2000);
 }
 
+function deleteItem() {
+	var key = this.parentNode.querySelector('.key').textContent;
+	getPairs(function(result) {
+		var newPairs = {};
+		for (var item in result.map) {
+			if (result.map.hasOwnProperty(item) && item !== key) {
+				newPairs[item] = result.map[item];
+			}
+		}
+		setPairs(newPairs, function() {
+			message(key + ' successfully removed'); 
+		});
+	});
+}
+
 function copyItemValueToClipboard() {
 	navigator.clipboard.writeText(this.parentNode.querySelector('.value').textContent)
 		.then(function () {
@@ -91,16 +90,18 @@ function copyItemValueToClipboard() {
 function populateList(pairs) {
 	itemsList.innerHTML = "";
 	
-	var key, value, item, divElement, deleteElement, keyElement, valueElement, copyImgElement, copyElement;
+	var key, value, item, divElement, deleteImgElement, deleteElement, keyElement, valueElement, copyImgElement, copyElement;
 
 	for (var i in pairs) {
 		key = i;
 		value = pairs[key];
+
+		deleteImgElement = document.createElement('img');
+		deleteImgElement.src = '../images/delete_16.png';
 		
-		deleteElement = document.createElement('span');
-		deleteElement.className = 'delete';
-		deleteElement.textContent = 'X';
-		deleteElement.onclick = deleteItemListener(key);
+		deleteElement = document.createElement('button');
+		deleteElement.appendChild(deleteImgElement);
+		deleteElement.onclick = deleteItem;
 		
 		keyElement = document.createElement('span');
 		keyElement.className = 'key';
