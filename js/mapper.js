@@ -78,28 +78,53 @@ function message(message) {
 	}, 2000);
 }
 
+function copyItemValueToClipboard() {
+	navigator.clipboard.writeText(this.parentNode.querySelector('.value').textContent)
+		.then(function () {
+			message('Value copied to clipboard.');
+		})
+		.catch(function () {
+			message('Failed to copy value to clipboard.');
+		});
+}
+
 function populateList(pairs) {
 	itemsList.innerHTML = "";
-	var key, value, item, divElement, keyElement, valueElement;
+	
+	var key, value, item, divElement, deleteElement, keyElement, valueElement, copyElement;
+
+	var copyImgElement = document.createElement('img');
+	copyImgElement.src = '../images/copy_16.png';
+	
 	for (var i in pairs) {
-		item = document.createElement('li');
 		key = i;
 		value = pairs[key];
+		
 		deleteElement = document.createElement('span');
 		deleteElement.className = 'delete';
 		deleteElement.textContent = 'X';
 		deleteElement.onclick = deleteItemListener(key);
+		
 		keyElement = document.createElement('span');
 		keyElement.className = 'key';
 		keyElement.textContent = key;
+		
 		valueElement = document.createElement('span');
 		valueElement.className = 'value';
 		valueElement.textContent = value;
+		
+		copyElement = document.createElement('button');
+		copyElement.appendChild(copyImgElement);
+		copyElement.onclick = copyItemValueToClipboard;
+		
 		divElement = document.createElement('DIV');
 		divElement.className = 'itemDiv';
 		divElement.appendChild(deleteElement);
 		divElement.appendChild(keyElement);
 		divElement.appendChild(valueElement);
+		divElement.appendChild(copyElement);
+		
+		item = document.createElement('li');
 		item.appendChild(divElement);
 		itemsList.appendChild(item);
 		console.log("key:", i, " value:", pairs[i]);
