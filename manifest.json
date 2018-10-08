@@ -1,6 +1,7 @@
 {
     "name": "Mapper",
-    "version": "1.0",
+    "short_name": "Mapper",
+    "version": "1.1.0",
     "description": "Add key value pairs",
     "permissions": ["declarativeContent", "storage"],
     "background": {
@@ -12,16 +13,14 @@
         "default_icon": {
             "16": "images/add_16.png",
             "24": "images/add_24.png",
-            "32": "images/add_32.png",
-            "64": "images/add_64.png",
+            "48": "images/add_48.png",
             "128": "images/add_128.png"
         }
     },
     "icons": {
         "16": "images/add_16.png",
         "24": "images/add_24.png",
-        "32": "images/add_32.png",
-        "64": "images/add_64.png",
+        "48": "images/add_48.png",
         "128": "images/add_128.png"
     },
     "manifest_version": 2
