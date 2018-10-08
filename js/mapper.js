@@ -141,4 +141,14 @@ function loadPairs() {
 	getPairs(function(result) {
 		populateList(result.map);
 	});
+
+	chrome.commands.onCommand.addListener(function (command) {
+		if (command === "toggle_popup") {
+			chrome.tabs.query({
+				active: true,
+				currentWindow: true
+			});
+		}
+	});
+
 }
