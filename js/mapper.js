@@ -78,11 +78,24 @@ function message(message) {
 	}, 2000);
 }
 
+function copyToClipboardOnClick() {
+	navigator.clipboard.writeText(this.querySelector('.value').textContent)
+		.then(function () {
+			message('Value copied to clipboard.');
+		})
+		.catch(function () {
+			message('Failed to copy value to clipboard.');
+		});
+}
+
 function populateList(pairs) {
 	itemsList.innerHTML = "";
-	var key, value, item, divElement, keyElement, valueElement;
+	var key, value, item, divElement, keyElement, valueElement, deleteItem;
 	for (var i in pairs) {
 		item = document.createElement('li');
+		deleteItem = document.createElement('button');
+		deleteItem.innerHTML = "X";
+		item.addEventListener('click', copyToClipboardOnClick);
 		key = i;
 		value = pairs[key];
 		deleteElement = document.createElement('span');
