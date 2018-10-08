@@ -11,6 +11,10 @@
 				font-size: 16px;
 				height: 30px;
 				margin: auto 2px auto 2px;
+				border-radius: 5px;
+				border-style: solid;
+				border-width: 1px;
+				padding-left: 5px;
 			}
 			button {
 				border: none;
@@ -60,7 +64,7 @@
 		<div class="new_item">
 			<input id="keyInput" type="text" placeholder="Enter key"/>
 			<input id="valueInput" type="text" placeholder="Enter value"/>
-			<button id="addItem" type="submit"><img src="../images/add_24.png"/></button>
+			<button id="addItem" type="submit"><img src="../images/add_16.png"/></button>
 		</div>
 		<div class="message">
 			<span id="message">New pair added successfully</span>
@@ -68,6 +72,7 @@
 		<ul id="itemsList">
 			<li>
 				<div class="itemDiv">
+					<button type="submit"><img src="../images/delete_16.png"/></button>
 					<span class="key">Key</span>
 					<span class="value">Value</span>
 					<button type="submit"><img src="../images/copy_16.png"/></button>
