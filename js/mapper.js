@@ -46,6 +46,22 @@ function addPair(key, value, callback) {
 	});
 }
 
+function deleteItemListener(key) {
+	return function () {
+		getPairs(function(result) {
+			var newPairs = {};
+			for (var item in result.map) {
+				if (result.map.hasOwnProperty(item) && item !== key) {
+					newPairs[item] = result.map[item];
+				}
+			}
+			setPairs(newPairs, function() {
+				message(key + ' successfully removed'); 
+			});
+		});
+	}
+}
+
 function getPairs(callback) {
 	chrome.storage.sync.get(['map'], callback);
 }
@@ -69,6 +85,10 @@ function populateList(pairs) {
 		item = document.createElement('li');
 		key = i;
 		value = pairs[key];
+		deleteElement = document.createElement('span');
+		deleteElement.className = 'delete';
+		deleteElement.textContent = 'X';
+		deleteElement.onclick = deleteItemListener(key);
 		keyElement = document.createElement('span');
 		keyElement.className = 'key';
 		keyElement.textContent = key;
@@ -77,6 +97,7 @@ function populateList(pairs) {
 		valueElement.textContent = value;
 		divElement = document.createElement('DIV');
 		divElement.className = 'itemDiv';
+		divElement.appendChild(deleteElement);
 		divElement.appendChild(keyElement);
 		divElement.appendChild(valueElement);
 		item.appendChild(divElement);
