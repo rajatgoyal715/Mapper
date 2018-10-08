@@ -17,5 +17,5 @@ Manage key-value pairs in one click by add, reading or deleting mappings.
 
 ## ToDo
 - [ ] Add shortcut command to add new pair
-- [ ] Add option to copy value of an item
-- [ ] Add option to delete/remove an item
+- [x] Add option to copy value of an item
+- [x] Add option to delete/remove an item
