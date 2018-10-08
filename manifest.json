@@ -5,7 +5,7 @@
     "permissions": ["declarativeContent", "storage"],
     "background": {
         "scripts": ["js/background.js"],
-        "persistant": false
+        "persistent": false
     },
     "page_action": {
         "default_popup": "html/popup.html",
