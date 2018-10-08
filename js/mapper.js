@@ -91,11 +91,8 @@ function copyItemValueToClipboard() {
 function populateList(pairs) {
 	itemsList.innerHTML = "";
 	
-	var key, value, item, divElement, deleteElement, keyElement, valueElement, copyElement;
+	var key, value, item, divElement, deleteElement, keyElement, valueElement, copyImgElement, copyElement;
 
-	var copyImgElement = document.createElement('img');
-	copyImgElement.src = '../images/copy_16.png';
-	
 	for (var i in pairs) {
 		key = i;
 		value = pairs[key];
@@ -112,6 +109,9 @@ function populateList(pairs) {
 		valueElement = document.createElement('span');
 		valueElement.className = 'value';
 		valueElement.textContent = value;
+
+		copyImgElement = document.createElement('img');
+		copyImgElement.src = '../images/copy_16.png';
 		
 		copyElement = document.createElement('button');
 		copyElement.appendChild(copyImgElement);
