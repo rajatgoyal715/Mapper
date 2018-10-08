@@ -48,7 +48,7 @@ function addPair(key, value, callback) {
 
 function deleteItemListener(key) {
 	return function () {
-		chrome.storage.sync.get(['map'], function(result) {
+		getPairs(function(result) {
 			var newPairs = {};
 			for (var item in result.map) {
 				if (result.map.hasOwnProperty(item) && item !== key) {
