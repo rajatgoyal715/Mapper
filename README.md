@@ -1,5 +1,5 @@
 # Mapper
-Manage key-value pairs in one click by add, reading or deleting mappings.
+Manage key-value pairs in one click by adding, reading or deleting mappings.
 
 ## Getting Started
 - Fork this repository.
@@ -16,6 +16,6 @@ Manage key-value pairs in one click by add, reading or deleting mappings.
 ![Screenshot 2](/screenshots/framed/dell4.png)
 
 ## ToDo
-- [ ] Add shortcut command to add new pair
+- [x] Add shortcut command to add new pair
 - [x] Add option to copy value of an item
 - [x] Add option to delete/remove an item
