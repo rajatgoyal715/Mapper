@@ -1,6 +1,6 @@
 var keyInput, valueInput, spanMessage, addButton, itemsList;
 
-window.onload = function() {
+window.onload = function () {
 	keyInput = this.document.getElementById('keyInput');
 	keyInput.textContent = "";
 
@@ -16,20 +16,29 @@ window.onload = function() {
 	itemsList = this.document.getElementById('itemsList');
 
 	loadPairs();
+	getSelection();
+}
+
+function getSelection() {
+	chrome.tabs.executeScript({
+		code: 'window.getSelection().toString()'
+	}, (result) => {
+		if (result && result[0]) valueInput.value = result[0].replace(/\n/g, ' ');
+	});
 }
 
 function addItem() {
 	var key = keyInput.value;
-	if(!key) {
+	if (!key) {
 		message('Error: No key specified');
 		return;
 	}
 	var value = valueInput.value;
-	if(!value) {
+	if (!value) {
 		message('Error: No value specified');
 		return;
 	}
-	addPair(key, value, function() {
+	addPair(key, value, function () {
 		message('New pair added successfully');
 	});
 }
@@ -37,7 +46,7 @@ function addItem() {
 function addPair(key, value, callback) {
 	console.log("key:", key);
 	console.log("value:", value);
-	getPairs(function(result) {
+	getPairs(function (result) {
 		pairs = result.map;
 		console.log(pairs);
 		pairs[key] = value;
@@ -51,28 +60,30 @@ function getPairs(callback) {
 }
 
 function setPairs(pairs, callback) {
-	chrome.storage.sync.set({'map': pairs}, callback);
+	chrome.storage.sync.set({
+		'map': pairs
+	}, callback);
 }
 
 function message(message) {
 	spanMessage.textContent = message;
 	spanMessage.style.visibility = "visible";
-	setTimeout(function() {
+	setTimeout(function () {
 		spanMessage.style.visibility = "hidden";
 	}, 2000);
 }
 
 function deleteItem() {
 	var key = this.parentNode.querySelector('.key').textContent;
-	getPairs(function(result) {
+	getPairs(function (result) {
 		var newPairs = {};
 		for (var item in result.map) {
 			if (result.map.hasOwnProperty(item) && item !== key) {
 				newPairs[item] = result.map[item];
 			}
 		}
-		setPairs(newPairs, function() {
-			message(key + ' successfully removed'); 
+		setPairs(newPairs, function () {
+			message(key + ' successfully removed');
 		});
 	});
 }
@@ -89,7 +100,7 @@ function copyItemValueToClipboard() {
 
 function populateList(pairs) {
 	itemsList.innerHTML = "";
-	
+
 	var key, value, item, divElement, deleteImgElement, deleteElement, keyElement, valueElement, copyImgElement, copyElement;
 
 	for (var i in pairs) {
@@ -98,33 +109,33 @@ function populateList(pairs) {
 
 		deleteImgElement = document.createElement('img');
 		deleteImgElement.src = '../images/delete_16.png';
-		
+
 		deleteElement = document.createElement('button');
 		deleteElement.appendChild(deleteImgElement);
 		deleteElement.onclick = deleteItem;
-		
+
 		keyElement = document.createElement('span');
 		keyElement.className = 'key';
 		keyElement.textContent = key;
-		
+
 		valueElement = document.createElement('span');
 		valueElement.className = 'value';
 		valueElement.textContent = value;
 
 		copyImgElement = document.createElement('img');
 		copyImgElement.src = '../images/copy_16.png';
-		
+
 		copyElement = document.createElement('button');
 		copyElement.appendChild(copyImgElement);
 		copyElement.onclick = copyItemValueToClipboard;
-		
+
 		divElement = document.createElement('DIV');
 		divElement.className = 'itemDiv';
 		divElement.appendChild(deleteElement);
 		divElement.appendChild(keyElement);
 		divElement.appendChild(valueElement);
 		divElement.appendChild(copyElement);
-		
+
 		item = document.createElement('li');
 		item.appendChild(divElement);
 		itemsList.appendChild(item);
@@ -132,13 +143,13 @@ function populateList(pairs) {
 	}
 }
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
+chrome.storage.onChanged.addListener(function (changes, namespace) {
 	console.log('storage on changed');
 	loadPairs();
 });
 
 function loadPairs() {
-	getPairs(function(result) {
+	getPairs(function (result) {
 		populateList(result.map);
 	});
 }

@@ -3,7 +3,7 @@
     "short_name": "Mapper",
     "version": "1.1.0",
     "description": "Add key value pairs",
-    "permissions": ["declarativeContent", "storage"],
+    "permissions": ["declarativeContent", "storage", "tabs", "activeTab"],
     "background": {
         "scripts": ["js/background.js"],
         "persistent": false
@@ -24,13 +24,13 @@
         "128": "images/add_128.png"
     },
 	"commands": {
-        "toggle_popup": {
+        "_execute_browser_action": {
             "suggested_key": {
                 "default": "Ctrl+Shift+A",
 				"mac": "Command+Shift+A"
 			},
 			"description" : "Toggle popup"
-        }
+		}
 	},
     "manifest_version": 2
 }
