@@ -4,12 +4,4 @@ chrome.runtime.onInstalled.addListener(function() {
             chrome.storage.sync.set({'map': {}});
         }
     });
-	chrome.commands.onCommand.addListener(function (command) {
-		if (command === "toggle_popup") {
-			chrome.tabs.query({
-				active: true,
-				currentWindow: true
-			});
-        }
-	});
 });
