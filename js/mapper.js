@@ -34,7 +34,7 @@ window.onload = function () {
 function getSelection() {
 	chrome.tabs.executeScript({
 		code: 'window.getSelection().toString()'
-	}, (result) => {
+	}, function(result) {
 		if (result && result[0]) valueInput.value = result[0].replace(/\n/g, ' ');
 	});
 }
