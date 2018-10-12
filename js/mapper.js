@@ -3,9 +3,21 @@ var keyInput, valueInput, spanMessage, addButton, itemsList;
 window.onload = function () {
 	keyInput = this.document.getElementById('keyInput');
 	keyInput.textContent = "";
-
+	keyInput.addEventListener("keyup", function(event) {
+		event.preventDefault();
+		if (event.keyCode === 13) {
+			addItem();
+		}
+	});
+	
 	valueInput = this.document.getElementById('valueInput');
 	valueInput.textContent = "";
+	valueInput.addEventListener("keyup", function(event) {
+		event.preventDefault();
+		if (event.keyCode === 13) {
+			addItem();
+		}
+	});
 
 	addButton = this.document.getElementById('addItem');
 	addButton.onclick = addItem;
