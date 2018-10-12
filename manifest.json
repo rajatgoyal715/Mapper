@@ -1,7 +1,7 @@
 {
     "name": "Mapper",
     "short_name": "Mapper",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Add key value pairs",
     "permissions": ["declarativeContent", "storage", "tabs", "activeTab"],
     "background": {
