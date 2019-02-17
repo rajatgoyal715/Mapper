@@ -2,7 +2,6 @@ var keyInput, valueInput, spanMessage, addButton, itemsList;
 
 window.onload = function () {
 	keyInput = this.document.getElementById('keyInput');
-	keyInput.textContent = "";
 	keyInput.addEventListener("keyup", function(event) {
 		event.preventDefault();
 		if (event.keyCode === 13) {
@@ -11,7 +10,6 @@ window.onload = function () {
 	});
 	
 	valueInput = this.document.getElementById('valueInput');
-	valueInput.textContent = "";
 	valueInput.addEventListener("keyup", function(event) {
 		event.preventDefault();
 		if (event.keyCode === 13) {
@@ -27,8 +25,14 @@ window.onload = function () {
 
 	itemsList = this.document.getElementById('itemsList');
 
+	clearInputBoxes();
 	loadPairs();
 	getSelection();
+}
+
+function clearInputBoxes() {
+	keyInput.value = "";
+	valueInput.value = "";
 }
 
 function getSelection() {
@@ -52,6 +56,7 @@ function addItem() {
 	}
 	addPair(key, value, function () {
 		message('New pair added successfully');
+		clearInputBoxes();
 	});
 }
 
