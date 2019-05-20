@@ -8,8 +8,7 @@ Manage key-value pairs in one click by adding, reading or deleting mappings.
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/bgeofhefagcifjgeonhbfpadpjmlidgm.svg?label=version)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/bgeofhefagcifjgeonhbfpadpjmlidgm.svg)
 
-## Chrome Extension Link
-[Mapper](https://chrome.google.com/webstore/detail/mapper/bgeofhefagcifjgeonhbfpadpjmlidgm)
+<a href="https://chrome.google.com/webstore/detail/mapper/bgeofhefagcifjgeonhbfpadpjmlidgm" target="_blank"><img alt="Get it on Chrome Web Store" src="screenshots/chrome-web-store-badge.png" height="60px"/></a>
 
 ## Contributing
 - Fork this repository.
